@@ -1,0 +1,97 @@
+
+
+<h3>Selector de colores:</h3>
+<button (click)="logcolsel()">Alerta Color</button>
+<input type="text" [(ngModel)]="color_sel"/>
+<pre [style.border]="color_sel =='red' ? '5px solid black' : '1px solid blue'" 
+     [ngClass]="{
+         fondoAzul: color_sel =='blue',
+         fondoVerde: color_sel =='green'
+        }">
+    {{color_sel}}
+</pre>
+<div [ngStyle]="{'background':color_sel, 'width':'200px','height':'200px','float':'right','margin-right':'50%'}"></div>
+<div style="clear:both"></div>
+
+
+<hr/>
+
+<h3>Colores Switch</h3>
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase="'red'" [ngStyle]="{'background':color, 'color':'white'}">Es de color Rojo</li>
+    <li *ngSwitchCase="'green'" [ngStyle]="{'background':color, 'color':'white'}">Es de color Verde</li>
+    <li *ngSwitchCase="'blue'" [ngStyle]="{'background':color, 'color':'white'}">Es de color Azul</li>   
+</ul>
+
+<h1>{{titulo}}</h1>
+
+<strong>Empleado Estrella</strong>
+
+<div *ngIf="ex == true">
+    <button (click)="cambiarExterno(false)">Mostrar Empleado</button>
+    <ul >
+        <li>{{trabajos[1].nombre}}</li>
+        <li>{{trabajos[1].edad}}</li>
+        <li>{{trabajos[1].cargo}}</li>
+        <li *ngIf="trabajos[1].contratado==true">Sigues Contratado</li>
+        <li *ngIf="trabajos[1].contratado==false">Estas Despedido</li>
+    </ul>
+</div>
+<div *ngIf="ex == false">
+    <button (click)="cambiarExterno(true)">Mostrar Trabajador</button>
+    <ul>
+        <li>{{empleado.nombre}}</li>
+        <li>{{empleado.edad}}</li>
+        <li>{{empleado.cargo}}</li>
+        <li *ngIf="empleado.contratado==true">Sigues Contratado</li>
+        <li *ngIf="empleado.contratado==false">Estas Despedido</li>
+    </ul>
+</div>
+
+<h3>Listado de Empleados</h3>
+
+<ul>
+    <li *ngFor="let empleado of trabajos; let i = index">
+        <strong>Empleado {{i+1}}:</strong>
+        <ul>
+            <li>{{empleado.nombre}}</li>
+            <li>{{empleado.edad}}</li>
+            <li>{{empleado.cargo}}</li>
+            <li *ngIf="empleado.contratado==true">Sigues Contratado</li>
+            <li *ngIf="empleado.contratado==false">Estas Despedido</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

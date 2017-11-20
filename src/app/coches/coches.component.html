@@ -1,0 +1,58 @@
+<h3>{{Title}}</h3>
+<div>
+    <form #formCoche="ngForm" (ngSubmit)="onSubmit(); formCoche.reset();">
+        <p>
+            <label>Nombre:</label>
+            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="coche.nombre" required/>
+            <span *ngIf="nombre.touched && !nombre.valid">El Nombre Del coche NO es Valido</span>
+        </p>
+        <p>
+            <label>Caballos:</label>
+            <input type="text" name="caballos" #caballos="ngModel" [(ngModel)]="coche.caballos" required pattern="[0-9]+"/>
+            <span *ngIf="caballos.touched && !caballos.valid">Los caballos Del coche NO es Valido</span>       
+        </p>
+        <p>
+            <label>Color:</label>
+            <input type="text" name="color" #color="ngModel" [(ngModel)]="coche.color" required pattern="[a-zA-Z#]+"/>
+            <span *ngIf="color.touched && !color.valid">El Color Del coche NO es Valido</span>               
+        </p>
+        <p>
+            <label>Chido:</label>
+            <input type="text" name="chido" #chido="ngModel" [(ngModel)]="coche.chido" required/>
+        </p>
+        <p>
+            <input type="submit" value="Guardar"  [disabled]="!formCoche.form.valid">
+        </p>
+    </form>
+</div>
+
+<div class="listado">
+    <h4>Listado de coches</h4>
+    <ul>
+        <li *ngFor="let coche of coches;let i = index">{{i+1}}.-{{coche.nombre}}  --  {{coche.caballos}}  --  {{coche.color}}  --  {{coche.chido}}</li>
+    </ul>
+</div>
+<div class="listado">
+    <h3>Listado de Articulos</h3>
+    <ul *ngIf="articulos">
+        <li *ngFor="let articulo of articulos;let i = index">{{i+1}}.-{{articulo.id}}  --  {{articulo.title}}</li>
+    </ul>
+    <span *ngIf="!articulos">Loading list..</span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
